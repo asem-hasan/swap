@@ -16,6 +16,7 @@ t_node	*stack_new_node(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
+	new_node->index = 0;
 	new_node->next = NULL;
 	return (new_node);
 }
