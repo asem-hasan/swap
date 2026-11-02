@@ -11,34 +11,79 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+void	config_init(t_config *cfg)
+{
+	cfg->strategy = STRAT_ADAPTIVE;
+	cfg->bench = 0;
+	cfg->values = NULL;
+	cfg->count = 0;
+}
+
 int	add_number(t_node **a, int value)
 {
 	t_node	*node;
 
 	if (check_duplicates(*a, value))
 		return (0);
-	node = ft_lstnew(value);
+	node = stack_new_node(value);
 	if (!node)
 		return (0);
-	ft_lstadd_back(a, node);
+	list_add_back(a, node);
 	return (1);
+}
+
+void	free_split(char **tokens)
+{
+	int	i;
+
+	if (!tokens)
+		return ;
+	i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
+
+int	handle_arg(char *arg, t_node **a, t_config *cfg)
+{
+	char	**tokens;
+	int		value;
+	int		i;
+	int		ok;
+
+	tokens = ft_split(arg, ' ');
+	if (!tokens || !tokens[0])
+	{
+		free_split(tokens);
+		return (0);
+	}
+	ok = 1;
+	i = 0;
+	while (ok && tokens[i])
+	{
+		if (!parse_flag(tokens[i], cfg))
+			ok = parse_number(tokens[i], &value) && add_number(a, value);
+		i++;
+	}
+	free_split(tokens);
+	return (ok);
 }
 
 int	parse_args(int argc, char **argv, t_node **a, t_config *cfg)
 {
 	int	i;
-	int	value;
 
+	config_init(cfg);
 	i = 1;
 	while (i < argc)
 	{
-		if (!parse_flag(argv[i], cfg))
+		if (!handle_arg(argv[i], a, cfg))
 		{
-			if (!parse_number(argv[i], &value) || !add_number(a, value))
-			{
-				free_stack(a);
-				return (0);
-			}
+			list_free(a);
+			return (0);
 		}
 		i++;
 	}

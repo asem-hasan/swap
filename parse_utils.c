@@ -25,6 +25,21 @@ int	check_duplicates(t_node *stack_a, int value)
 	return (0);
 }
 
+void	list_add_back(t_node **a, t_node *node)
+{
+	t_node	*last;
+
+	if (!*a)
+	{
+		*a = node;
+		return ;
+	}
+	last = *a;
+	while (last->next)
+		last = last->next;
+	last->next = node;
+}
+
 int	read_sign(const char **s)
 {
 	int	sign;
