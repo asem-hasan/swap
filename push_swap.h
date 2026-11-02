@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -17,6 +17,22 @@ typedef struct s_stack
 	t_node	*top;
 	int		size;
 }	t_stack;
+
+typedef enum e_strategy
+{
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX,
+	STRAT_ADAPTIVE
+}	t_strategy;
+
+typedef struct s_config
+{
+	t_strategy	strategy;
+	int			bench;
+	int			*values;
+	int			count;
+}	t_config;
 
 void	stack_init(t_stack *stack);
 t_node	*stack_new_node(int value);
@@ -34,5 +50,19 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+void	config_init(t_config *cfg);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_isdigit(int c);
+char	**ft_split(char const *s, char c);
+void	free_split(char **tokens);
+int		parse_flag(const char *arg, t_config *cfg);
+int		check_duplicates(t_node *stack_a, int value);
+int		parse_number(const char *s, int *final);
+int		add_number(t_node **a, int value);
+int		handle_arg(char *arg, t_node **a, t_config *cfg);
+int		parse_args(int argc, char **argv, t_node **a, t_config *cfg);
+void	list_add_back(t_node **a, t_node *node);
+void	list_free(t_node **a);
+int		compute_disorder(t_node *a);
 
 #endif
