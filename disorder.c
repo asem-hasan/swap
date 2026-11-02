@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	compute_disorder(t_node *a)
+int	compute_disorder(t_stack *a)
 {
 	t_node		*i;
 	t_node		*j;
 	long long	pair;
 	long long	mistakes;
 
-	i = a;
+	i = a->top;
 	pair = 0;
 	mistakes = 0;
 	while (i)

@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	check_duplicates(t_node *stack_a, int value)
+int	check_duplicates(t_stack *stack_a, int value)
 {
 	t_node	*temp;
 
-	temp = stack_a;
+	if (!stack_a)
+		return (0);
+
+	temp = stack_a->top;
 	while (temp)
 	{
 		if (temp->value == value)
@@ -25,19 +28,24 @@ int	check_duplicates(t_node *stack_a, int value)
 	return (0);
 }
 
-void	list_add_back(t_node **a, t_node *node)
+void	list_add_back(t_stack *a, t_node *node)
 {
 	t_node	*last;
 
-	if (!*a)
+	if (!a)
+		return ;
+
+	if (!a->top)
 	{
-		*a = node;
+		a->top = node;
+		a->size++;
 		return ;
 	}
-	last = *a;
+	last = a->top;
 	while (last->next)
 		last = last->next;
 	last->next = node;
+	a->size++;
 }
 
 int	read_sign(const char **s)

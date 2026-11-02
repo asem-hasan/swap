@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include <stdio.h>
+
 
 static const char	*strategy_name(t_strategy s, int d)
 {
@@ -28,18 +28,33 @@ static void	print_bench(t_config *cfg, int d)
 int	main(int argc, char **argv)
 {
 	t_config	cfg;
-	t_node		*a;
+	t_stack		a;
+	t_node		*node;
 
+	stack_init(&a);
+	    printf("After init A: size = %d, top = %p\n",
+        a.size, (void *)a.top);
 	if (argc == 1)
 		return (0);
-	a = NULL;
 	if (!parse_args(argc, argv, &a, &cfg))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	if (cfg.bench)
-		print_bench(&cfg, compute_disorder(a));
-	list_free(&a);
+		print_bench(&cfg, compute_disorder(&a));
+	    node = a.top;
+    while (node)
+    {
+        printf("%d -> ", node->value);
+	printf("%d\n", node->index);
+        node = node->next;
+    }
+    printf("NULL\n");
+
+		    printf("After adding nodes:\n");
+    printf("size = %d\n", a.size);
+    printf("top = %d\n", a.top->value);
+	stack_free(&a);
 	return (0);
 }

@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void	stack_add_top(t_stack *stack, t_node *node)
+{
+	if (!stack || !node)
+		return ;
+	node->next = stack->top;
+	stack->top = node;
+	stack->size++;
+}
+
 void	pa(t_stack *a, t_stack *b)
 {
 	t_node	*temp;

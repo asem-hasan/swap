@@ -24,7 +24,7 @@ int	parse_flag(const char *arg, t_config *cfg)
 	else if (ft_strcmp(arg, "--adaptive") == 0)
 		cfg->strategy = STRAT_ADAPTIVE;
 	else
-		return (0);
+		return (0); 
 	return (1);
 }
 

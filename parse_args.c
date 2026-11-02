@@ -19,11 +19,11 @@ void	config_init(t_config *cfg)
 	cfg->count = 0;
 }
 
-int	add_number(t_node **a, int value)
+int	add_number(t_stack *a, int value)
 {
 	t_node	*node;
 
-	if (check_duplicates(*a, value))
+	if (check_duplicates(a, value))
 		return (0);
 	node = stack_new_node(value);
 	if (!node)
@@ -47,7 +47,7 @@ void	free_split(char **tokens)
 	free(tokens);
 }
 
-int	handle_arg(char *arg, t_node **a, t_config *cfg)
+int	handle_arg(char *arg, t_stack *a, t_config *cfg)
 {
 	char	**tokens;
 	int		value;
@@ -64,7 +64,7 @@ int	handle_arg(char *arg, t_node **a, t_config *cfg)
 	i = 0;
 	while (ok && tokens[i])
 	{
-		if (!parse_flag(tokens[i], cfg))
+		if (!parse_flag(tokens[i], cfg)) 
 			ok = parse_number(tokens[i], &value) && add_number(a, value);
 		i++;
 	}
@@ -72,7 +72,7 @@ int	handle_arg(char *arg, t_node **a, t_config *cfg)
 	return (ok);
 }
 
-int	parse_args(int argc, char **argv, t_node **a, t_config *cfg)
+int	parse_args(int argc, char **argv, t_stack *a, t_config *cfg)
 {
 	int	i;
 
@@ -82,7 +82,7 @@ int	parse_args(int argc, char **argv, t_node **a, t_config *cfg)
 	{
 		if (!handle_arg(argv[i], a, cfg))
 		{
-			list_free(a);
+			stack_free(a);
 			return (0);
 		}
 		i++;

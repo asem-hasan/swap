@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+#include <stdio.h>
 
 typedef struct s_node
 {
@@ -56,13 +57,12 @@ int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 void	free_split(char **tokens);
 int		parse_flag(const char *arg, t_config *cfg);
-int		check_duplicates(t_node *stack_a, int value);
+int		check_duplicates(t_stack *stack_a, int value);
 int		parse_number(const char *s, int *final);
-int		add_number(t_node **a, int value);
-int		handle_arg(char *arg, t_node **a, t_config *cfg);
-int		parse_args(int argc, char **argv, t_node **a, t_config *cfg);
-void	list_add_back(t_node **a, t_node *node);
-void	list_free(t_node **a);
-int		compute_disorder(t_node *a);
+int		add_number(t_stack *a, int value);
+int		handle_arg(char *arg, t_stack *a, t_config *cfg);
+int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
+void	list_add_back(t_stack *a, t_node *node);
+int		compute_disorder(t_stack *a);
 
 #endif

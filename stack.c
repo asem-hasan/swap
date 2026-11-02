@@ -21,15 +21,6 @@ t_node	*stack_new_node(int value)
 	return (new_node);
 }
 
-void	stack_add_top(t_stack *stack, t_node *node)
-{
-	if (!stack || !node)
-		return ;
-	node->next = stack->top;
-	stack->top = node;
-	stack->size++;
-}
-
 void	stack_free(t_stack *stack)
 {
 	t_node	*node;
