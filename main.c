@@ -2,11 +2,11 @@
 int main(void)
 {
     t_stack *a;
-    t_stack  *b;
+//    t_stack  *b;
     t_node *node;
 
     stack_init(a);
-    stack_init(b);
+  //  stack_init(b);
     printf("After init A: size = %d, top = %p\n",
         a->size, (void *)a->top);
 
@@ -39,10 +39,20 @@ int main(void)
     while (node)
     {
         printf("%d -> ", node->value);
+	printf("%d\n", node->index);
         node = node->next;
     }
     printf("NULL\n");
-
+    assign_index(a);
+        node = a->top;
+    while (node)
+    {
+        printf("%d -> ", node->value);
+        printf("%d\n", node->index);
+        node = node->next;
+    }
+    printf("NULL\n");
+/*
             printf("After init B: size = %d, top = %p\n",
         b->size, (void *)b->top);
        node = stack_new_node(1032);
@@ -97,9 +107,9 @@ int main(void)
     printf("top = %d\n", a->top->value);
             printf("After rr B:\n");
     printf("size = %d\n", b->size);
-    printf("top = %d\n", b->top->value);
+    printf("top = %d\n", b->top->value);*/
   stack_free(a);
-  stack_free(b);
+  //stack_free(b);
     return (0);
 }
   
