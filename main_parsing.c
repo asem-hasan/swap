@@ -1,18 +1,6 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	list_free(t_node **a)
-{
-	t_node	*next;
-
-	while (*a)
-	{
-		next = (*a)->next;
-		free(*a);
-		*a = next;
-	}
-}
-
 static const char	*strategy_name(t_strategy s, int d)
 {
 	if (s == STRAT_SIMPLE)
