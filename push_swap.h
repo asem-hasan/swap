@@ -64,5 +64,6 @@ int		handle_arg(char *arg, t_stack *a, t_config *cfg);
 int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
 void	list_add_back(t_stack *a, t_node *node);
 int		compute_disorder(t_stack *a);
+void	simple(t_stack *a, t_stack *b);
 
 #endif
