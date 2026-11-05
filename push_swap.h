@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -65,5 +65,6 @@ int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
 void	list_add_back(t_stack *a, t_node *node);
 int		compute_disorder(t_stack *a);
 void	simple(t_stack *a, t_stack *b);
+void	complex(t_stack *a, t_stack *b);
 
 #endif

@@ -17,7 +17,6 @@ int	check_duplicates(t_stack *stack_a, int value)
 
 	if (!stack_a)
 		return (0);
-
 	temp = stack_a->top;
 	while (temp)
 	{
@@ -34,7 +33,6 @@ void	list_add_back(t_stack *a, t_node *node)
 
 	if (!a)
 		return ;
-
 	if (!a->top)
 	{
 		a->top = node;

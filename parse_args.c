@@ -64,7 +64,7 @@ int	handle_arg(char *arg, t_stack *a, t_config *cfg)
 	i = 0;
 	while (ok && tokens[i])
 	{
-		if (!parse_flag(tokens[i], cfg)) 
+		if (!parse_flag(tokens[i], cfg))
 			ok = parse_number(tokens[i], &value) && add_number(a, value);
 		i++;
 	}

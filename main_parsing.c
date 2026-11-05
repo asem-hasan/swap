@@ -57,7 +57,10 @@ int	main(int argc, char **argv)
 	// 	    printf("After adding nodes:\n");
   //   printf("size = %d\n", a.size);
   //   printf("top = %d\n", a.top->value);
-		simple(&a,&b);
+	if (cfg.strategy == STRAT_SIMPLE)
+		simple(&a, &b);
+	else if (cfg.strategy == STRAT_COMPLEX)
+		complex(&a, &b);
 // 		printf("after sort\n");
 // 		node = a.top;
 // 	while (node)
