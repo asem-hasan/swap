@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	t_config	cfg;
 	t_stack		a;
 	t_stack		b;
-	// t_node		*node;
+	t_node		*node;
 
 	stack_init(&a);
 	stack_init(&b);
@@ -61,15 +61,15 @@ int	main(int argc, char **argv)
 		simple(&a, &b);
 	else if (cfg.strategy == STRAT_COMPLEX)
 		complex(&a, &b);
-// 		printf("after sort\n");
-// 		node = a.top;
-// 	while (node)
-// 	{
-// 			printf("%d -> ", node->value);
-// // printf("%d\n", node->index);
-// 			node = node->next;
-// 	}
-// 	printf("NULL\n");
+	printf("after sort\n");
+	node = a.top;
+	while (node)
+	{
+			printf("%d -> ", node->value);
+printf("%d\n", node->index);
+			node = node->next;
+	}
+	printf("NULL\n");
 
 // 			printf("After adding nodes:\n");
 // 	printf("size = %d\n", a.size);

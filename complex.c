@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-static int	get_max_bits(int max_index)
+static size_t	get_max_bits(size_t max_index)
 {
-	int	max_bits;
+	size_t	max_bits;
 
 	max_bits = 0;
 	while ((max_index >> max_bits) != 0)
@@ -10,38 +10,38 @@ static int	get_max_bits(int max_index)
 	return (max_bits);
 }
 
-static void	sort_bit(t_stack *a, t_stack *b, int size, int bit)
+static void	sort_bit(t_stack *stack_a, t_stack *stack_b, size_t size, int bit)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (((a->top->index >> bit) & 1) == 0)
-			pb(a, b);
+		if (((stack_a->top->index >> bit) & 1) == 0)
+			pb(stack_a, stack_b);
 		else
-			ra(a);
+			ra(stack_a);
 		i++;
 	}
-	while (b->size > 0)
-		pa(a, b);
+	while (stack_b->size > 0)
+		pa(stack_a, stack_b);
 }
 
-void	complex(t_stack *a, t_stack *b)
+void	complex(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_bits;
-	int	size;
+	size_t	size;
 	int	bit;
 
-	if (!a || !b || a->size < 2)
+	if (!stack_a || !stack_b || stack_a->size < 2)
 		return ;
-	assign_index(a);
-	size = a->size;
+	assign_index(stack_a);
+	size = stack_a->size;
 	max_bits = get_max_bits(size - 1);
 	bit = 0;
 	while (bit < max_bits)
 	{
-		sort_bit(a, b, size, bit);
+		sort_bit(stack_a, stack_b, size, bit);
 		bit++;
 	}
 }
