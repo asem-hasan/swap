@@ -35,7 +35,6 @@ void	complex(t_stack *stack_a, t_stack *stack_b)
 
 	if (!stack_a || !stack_b || stack_a->size < 2)
 		return ;
-	assign_index(stack_a);
 	size = stack_a->size;
 	max_bits = get_max_bits(size - 1);
 	bit = 0;
