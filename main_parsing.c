@@ -57,19 +57,22 @@ int	main(int argc, char **argv)
 	// 	    printf("After adding nodes:\n");
   //   printf("size = %d\n", a.size);
   //   printf("top = %d\n", a.top->value);
+	assign_index(&a);
 	if (cfg.strategy == STRAT_SIMPLE)
 		simple(&a, &b);
 	else if (cfg.strategy == STRAT_COMPLEX)
 		complex(&a, &b);
-	printf("after sort\n");
-	node = a.top;
-	while (node)
-	{
-			printf("%d -> ", node->value);
-printf("%d\n", node->index);
-			node = node->next;
-	}
-	printf("NULL\n");
+	else if (cfg.strategy == STRAT_MEDIUM)
+		chunk_sort(&a, &b);
+// 	printf("after sort\n");
+// 	node = a.top;
+// 	while (node)
+// 	{
+// 			printf("%d -> ", node->value);
+// printf("%d\n", node->index);
+// 			node = node->next;
+// 	}
+// 	printf("NULL\n");
 
 // 			printf("After adding nodes:\n");
 // 	printf("size = %d\n", a.size);
