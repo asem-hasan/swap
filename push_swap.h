@@ -65,6 +65,7 @@ int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
 void	list_add_back(t_stack *a, t_node *node);
 int		compute_disorder(t_stack *a);
 void	simple(t_stack *stack_a, t_stack *stack_b);
+void	chunk_sort(t_stack *stack_a, t_stack *stack_b);
 void	complex(t_stack *stack_a, t_stack *stack_b);
-
+size_t	ft_isqrt(size_t n);
 #endif
