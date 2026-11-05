@@ -16,7 +16,7 @@ typedef struct s_node
 typedef struct s_stack
 {
 	t_node	*top;
-	int		size;
+	size_t		size;
 }	t_stack;
 
 typedef enum e_strategy

@@ -1,20 +1,5 @@
 #include "push_swap.h"
 
-static size_t	ft_len(t_stack *stack)
-{
-	t_node	*node;
-	size_t	len;
-
-	node = stack->top;
-	len = 0;
-	while (node)
-	{
-		len++;
-		node = node->next;
-	}
-	return (len);
-}
-
 static int	ft_find_min_pos(t_stack *stack)
 {
 	t_node		*node;
@@ -71,26 +56,23 @@ static void	sort(t_stack *stack_a, t_stack *stack_b)
 void	simple(t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	min_pos;
-	size_t	len;
 	size_t	moves;
 
 	if (!stack_a || !stack_a->top)
 		return ;
-	len = ft_len(stack_a);
-	while (len > 0)
+	while (stack_a->size > 0)
 	{
 		min_pos = ft_find_min_pos(stack_a);
-		if (min_pos < len / 2)
+		if (min_pos < stack_a->size / 2)
 		{
 			moves = min_pos;
 			transfer(stack_a, stack_b, moves, 1);
 		}
 		else
 		{
-			moves = len - min_pos;
+			moves = stack_a->size - min_pos;
 			transfer(stack_a, stack_b, moves, 0);
 		}
-		len--;
 	}
 	sort(stack_a, stack_b);
 }
