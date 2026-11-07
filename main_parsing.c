@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static t_strategy choose_adaptive_strategy(int disorder)
+t_strategy choose_adaptive_strategy(int disorder)
 {
 	if (disorder < 2000)
 		return (STRAT_SIMPLE);
@@ -9,7 +9,7 @@ static t_strategy choose_adaptive_strategy(int disorder)
 	return (STRAT_COMPLEX);
 }
 
-static void run_strategy(t_strategy strategy, t_stack *a, t_stack *b)
+void run_strategy(t_strategy strategy, t_stack *a, t_stack *b)
 {
 	if (strategy == STRAT_SIMPLE)
 		simple(a, b);
@@ -32,11 +32,9 @@ int main(int argc, char **argv)
 	stack_init(&b);
 	if (argc == 1)
 		return (0);
-	config_init(&cfg);
 	if (!parse_args(argc, argv, &a, &cfg))
 	{
 		write(2, "Error\n", 6);
-		stack_free(&a);
 		stack_free(&b);
 		return (1);
 	}

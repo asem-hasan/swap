@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/28 15:04:27 by syaseen           #+#    #+#             */
-/*   Updated: 2026/10/28 15:08:01 by syaseen          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "push_swap.h"
 
 void	config_init(t_config *cfg)
@@ -32,43 +21,43 @@ int	add_number(t_stack *a, int value)
 	return (1);
 }
 
-void	free_split(char **tokens)
+void	free_split(char **args)
 {
 	int	i;
 
-	if (!tokens)
+	if (!args)
 		return ;
 	i = 0;
-	while (tokens[i])
+	while (args[i])
 	{
-		free(tokens[i]);
+		free(args[i]);
 		i++;
 	}
-	free(tokens);
+	free(args);
 }
 
 int	handle_arg(char *arg, t_stack *a, t_config *cfg)
 {
-	char	**tokens;
+	char	**args;
 	int		value;
 	int		i;
 	int		ok;
 
-	tokens = ft_split(arg, ' ');
-	if (!tokens || !tokens[0])
+	args = ft_split(arg, ' ');
+	if (!args || !args[0])
 	{
-		free_split(tokens);
+		free_split(args);
 		return (0);
 	}
 	ok = 1;
 	i = 0;
-	while (ok && tokens[i])
+	while (ok && args[i])
 	{
-		if (!parse_flag(tokens[i], cfg))
-			ok = parse_number(tokens[i], &value) && add_number(a, value);
+		if (!parse_flag(args[i], cfg))
+			ok = parse_number(args[i], &value) && add_number(a, value);
 		i++;
 	}
-	free_split(tokens);
+	free_split(args);
 	return (ok);
 }
 
