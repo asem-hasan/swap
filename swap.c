@@ -10,6 +10,7 @@ void	sa(t_stack *a)
 	a->top = temp->next;
 	temp->next = a->top->next;
 	a->top->next = temp;
+	stats_record(a->stats, OP_SA);
 	printf("sa\n");
 }
 
@@ -23,6 +24,7 @@ void	sb(t_stack *b)
 	b->top = temp->next;
 	temp->next = b->top->next;
 	b->top->next = temp;
+	stats_record(b->stats, OP_SB);
 	printf("sb\n");
 }
 
@@ -49,5 +51,8 @@ void	ss(t_stack *a, t_stack *b)
 		done = 1;
 	}
 	if (done)
+	{
+		stats_record(a->stats, OP_SS);
 		printf("ss\n");
+	}
 }

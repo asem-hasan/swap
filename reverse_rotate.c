@@ -37,17 +37,26 @@ void	rrr(t_stack *a, t_stack *b)
 	done = rev_rotate(a);
 	done |= rev_rotate(b);
 	if (done)
+	{
+		stats_record(a->stats, OP_RRR);
 		printf("rrr\n");
+	}
 }
 
 void	rra(t_stack *a)
 {
 	if (rev_rotate(a))
+	{
+		stats_record(a->stats, OP_RRA);
 		printf("rra\n");
+	}
 }
 
 void	rrb(t_stack *b)
 {
 	if (rev_rotate(b))
+	{
+		stats_record(b->stats, OP_RRB);
 		printf("rrb\n");
+	}
 }

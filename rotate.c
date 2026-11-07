@@ -28,13 +28,19 @@ static	int	rotate(t_stack *s)
 void	ra(t_stack *a)
 {
 	if (rotate(a))
+	{
+		stats_record(a->stats, OP_RA);
 		printf("ra\n");
+	}
 }
 
 void	rb(t_stack *b)
 {
 	if (rotate(b))
+	{
+		stats_record(b->stats, OP_RB);
 		printf("rb\n");
+	}
 }
 
 void	rr(t_stack *a, t_stack *b)
@@ -44,5 +50,8 @@ void	rr(t_stack *a, t_stack *b)
 	done = rotate(a);
 	done |= rotate(b);
 	if (done)
+	{
+		stats_record(a->stats, OP_RR);
 		printf("rr\n");
+	}
 }

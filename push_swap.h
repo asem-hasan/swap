@@ -13,11 +13,34 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+typedef enum e_operation
+{
+    OP_SA,
+    OP_SB,
+    OP_SS,
+    OP_PA,
+    OP_PB,
+    OP_RA,
+    OP_RB,
+    OP_RR,
+    OP_RRA,
+    OP_RRB,
+    OP_RRR,
+    OP_COUNT
+}   t_operation;
+
+typedef struct s_stats
+{
+    size_t  count[OP_COUNT];
+    size_t  total;
+}   t_stats;
+
 typedef struct s_stack
 {
-	t_node	*top;
-	size_t		size;
-}	t_stack;
+    t_node  *top;
+    int     size;
+    t_stats *stats;
+}   t_stack;
 
 typedef enum e_strategy
 {
@@ -64,8 +87,16 @@ int		handle_arg(char *arg, t_stack *a, t_config *cfg);
 int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
 void	list_add_back(t_stack *a, t_node *node);
 int		compute_disorder(t_stack *a);
+int     is_sorted(t_stack *a);
 void	simple(t_stack *stack_a, t_stack *stack_b);
 void	chunk_sort(t_stack *stack_a, t_stack *stack_b);
 void	complex(t_stack *stack_a, t_stack *stack_b);
+void    print_bench(t_config *cfg, t_stats *stats, int disorder);
+void    stats_record(t_stats *stats, t_operation op);
 size_t	ft_isqrt(size_t n);
+void	ft_putstr_fd(const char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	stats_record(t_stats *stats, t_operation op);
+
 #endif

@@ -6,6 +6,7 @@ void	stack_init(t_stack *stack)
 		return ;
 	stack->top = NULL;
 	stack->size = 0;
+	stack->stats = NULL;
 }
 
 t_node	*stack_new_node(int value)

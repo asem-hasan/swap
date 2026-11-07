@@ -19,6 +19,7 @@ void	pa(t_stack *a, t_stack *b)
 	b->top = temp->next;
 	b->size--;
 	stack_add_top(a, temp);
+	stats_record(a->stats, OP_PA);
 	printf("pa\n");
 }
 
@@ -32,5 +33,6 @@ void	pb(t_stack *a, t_stack *b)
 	a->top = temp->next;
 	a->size--;
 	stack_add_top(b, temp);
+	stats_record(a->stats, OP_PB);
 	printf("pb\n");
 }

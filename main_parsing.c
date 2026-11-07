@@ -1,83 +1,59 @@
 #include "push_swap.h"
 
-
-static const char	*strategy_name(t_strategy s, int d)
+static t_strategy choose_adaptive_strategy(int disorder)
 {
-	if (s == STRAT_SIMPLE)
-		return ("Simple / O(n^2)");
-	if (s == STRAT_MEDIUM)
-		return ("Medium / O(n*sqrt(n))");
-	if (s == STRAT_COMPLEX)
-		return ("Complex / O(n log n)");
-	if (d < 2000)
-		return ("Adaptive / O(n^2)");
-	if (d < 5000)
-		return ("Adaptive / O(n*sqrt(n))");
-	return ("Adaptive / O(n log n)");
+	if (disorder < 2000)
+		return (STRAT_SIMPLE);
+	if (disorder < 5000)
+		return (STRAT_MEDIUM);
+	return (STRAT_COMPLEX);
 }
 
-static void	print_bench(t_config *cfg, int d)
+static void run_strategy(t_strategy strategy, t_stack *a, t_stack *b)
 {
-	fprintf(stderr, "[bench] disorder: %d.%02d%%\n", d / 100, d % 100);
-	fprintf(stderr, "[bench] strategy: %s\n", strategy_name(cfg->strategy, d));
-	fprintf(stderr, "[bench] total_ops: 0\n");
-	fprintf(stderr, "[bench] sa: 0 sb: 0 ss: 0 pa: 0 pb: 0\n");
-	fprintf(stderr, "[bench] ra: 0 rb: 0 rr: 0 rra: 0 rrb: 0 rrr: 0\n");
+	if (strategy == STRAT_SIMPLE)
+		simple(a, b);
+	else if (strategy == STRAT_MEDIUM)
+		chunk_sort(a, b);
+	else if (strategy == STRAT_COMPLEX)
+		complex(a, b);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	t_config	cfg;
 	t_stack		a;
 	t_stack		b;
-	t_node		*node;
+	t_stats		stats;
+	int			disorder;
+	t_strategy	selected;
 
 	stack_init(&a);
 	stack_init(&b);
-	    // prinf("After init A: size = %d, top = %p\n",
-      //   a.size, (void *)a.top);t
 	if (argc == 1)
 		return (0);
+	config_init(&cfg);
 	if (!parse_args(argc, argv, &a, &cfg))
 	{
 		write(2, "Error\n", 6);
+		stack_free(&a);
+		stack_free(&b);
 		return (1);
 	}
-	if (cfg.bench)
-		print_bench(&cfg, compute_disorder(&a));
-	//     node = a.top;
-  //   while (node)
-  //   {
-  //       printf("%d -> ", node->value);
-	// // printf("%d\n", node->index);
-  //       node = node->next;
-  //   }
-  //   printf("NULL\n");
-
-	// 	    printf("After adding nodes:\n");
-  //   printf("size = %d\n", a.size);
-  //   printf("top = %d\n", a.top->value);
+	stats = (t_stats){0};
+	a.stats = &stats;
+	b.stats = &stats;
+	disorder = compute_disorder(&a);
+	selected = cfg.strategy;
+	if (selected == STRAT_ADAPTIVE)
+	    selected = choose_adaptive_strategy(disorder);
 	assign_index(&a);
-	if (cfg.strategy == STRAT_SIMPLE)
-		simple(&a, &b);
-	else if (cfg.strategy == STRAT_COMPLEX)
-		complex(&a, &b);
-	else if (cfg.strategy == STRAT_MEDIUM)
-		chunk_sort(&a, &b);
-// 	printf("after sort\n");
-// 	node = a.top;
-// 	while (node)
-// 	{
-// 			printf("%d -> ", node->value);
-// printf("%d\n", node->index);
-// 			node = node->next;
-// 	}
-// 	printf("NULL\n");
-
-// 			printf("After adding nodes:\n");
-// 	printf("size = %d\n", a.size);
-// 	printf("top = %d\n", a.top->value);
+	if (!is_sorted(&a))
+	    run_strategy(selected, &a, &b);
+	if (cfg.bench)
+		print_bench(&cfg, &stats, disorder);
 	stack_free(&a);
 	stack_free(&b);
+	free(cfg.values);
 	return (0);
 }

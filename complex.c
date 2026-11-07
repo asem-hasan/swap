@@ -29,9 +29,9 @@ static void	sort_bit(t_stack *stack_a, t_stack *stack_b, size_t size, int bit)
 
 void	complex(t_stack *stack_a, t_stack *stack_b)
 {
-	int	max_bits;
+	int		max_bits;
 	size_t	size;
-	int	bit;
+	int		bit;
 
 	if (!stack_a || !stack_b || stack_a->size < 2)
 		return ;
