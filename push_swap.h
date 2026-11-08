@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
+#include <stdio.h>
 
 typedef struct s_node
 {
@@ -42,8 +43,8 @@ typedef enum e_operation
 
 typedef struct s_stats
 {
-	size_t	count[OP_COUNT];
-	size_t	total;
+	int	count[OP_COUNT];
+	int	total;
 }	t_stats;
 
 typedef struct s_stack

@@ -34,12 +34,10 @@ static const char	*strategy_name(t_strategy strategy, int disorder)
 	return ("Adaptive / O(n log n)");
 }
 
-static void	put_stat(const char *name, size_t n)
+static void	put_stat(const char *name, int n)
 {
-	ft_printf(1, "%c", " ");
-	ft_printf(1, "%s", name);
-	ft_printf(1, "%s", ": ");
-	ft_printf(1, "%i", n);
+	ft_printf(1, " %s:", name);
+	ft_printf(1, "%d", n);
 }
 
 static void	print_ops(t_stats *s)
@@ -62,12 +60,14 @@ static void	print_ops(t_stats *s)
 
 void	print_bench(t_config *cfg, t_stats *stats, int disorder)
 {
+	if (!cfg || !stats)
+    	return ;
 	ft_printf(1, "%s", "[bench] disorder: ");
 	put_disorder(disorder);
 	ft_printf(1, "%s", "[bench] strategy: ");
-	ft_printf(1, strategy_name(cfg->strategy, disorder));
+	ft_printf(1, "%s", (char *)strategy_name(cfg->strategy, disorder));
 	ft_printf(1, "%s", "\n[bench] total_ops: ");
-	ft_printf(1, "%s", stats->total);
+	ft_printf(1,"%d", stats->total);
 	ft_printf(1, "%s", "\n");
 	print_ops(stats);
 }
