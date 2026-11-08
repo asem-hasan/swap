@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:18:14 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:18:17 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 void	sa(t_stack *a)
@@ -11,7 +22,7 @@ void	sa(t_stack *a)
 	temp->next = a->top->next;
 	a->top->next = temp;
 	stats_record(a->stats, OP_SA);
-	printf("sa\n");
+	ft_printf(1, "%s", "sa\n");
 }
 
 void	sb(t_stack *b)
@@ -25,7 +36,7 @@ void	sb(t_stack *b)
 	temp->next = b->top->next;
 	b->top->next = temp;
 	stats_record(b->stats, OP_SB);
-	printf("sb\n");
+	ft_printf(1, "%s", "sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -53,6 +64,6 @@ void	ss(t_stack *a, t_stack *b)
 	if (done)
 	{
 		stats_record(a->stats, OP_SS);
-		printf("ss\n");
+		ft_printf(1, "%s", "ss\n");
 	}
 }

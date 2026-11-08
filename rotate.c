@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:18:47 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:18:49 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 static	t_node	*find_last(t_stack *stack)
@@ -30,7 +41,7 @@ void	ra(t_stack *a)
 	if (rotate(a))
 	{
 		stats_record(a->stats, OP_RA);
-		printf("ra\n");
+		ft_printf(1, "%s", "ra\n");
 	}
 }
 
@@ -39,7 +50,7 @@ void	rb(t_stack *b)
 	if (rotate(b))
 	{
 		stats_record(b->stats, OP_RB);
-		printf("rb\n");
+		ft_printf(1, "%s", "rb\n");
 	}
 }
 
@@ -52,6 +63,6 @@ void	rr(t_stack *a, t_stack *b)
 	if (done)
 	{
 		stats_record(a->stats, OP_RR);
-		printf("rr\n");
+		ft_printf(1, "%s", "rr\n");
 	}
 }

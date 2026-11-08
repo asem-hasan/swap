@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:14:12 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:45:32 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 void	stats_record(t_stats *stats, t_operation op)
@@ -8,7 +19,7 @@ void	stats_record(t_stats *stats, t_operation op)
 	stats->total++;
 }
 
-static const char *strategy_name(t_strategy strategy, int disorder)
+static const char	*strategy_name(t_strategy strategy, int disorder)
 {
 	if (strategy == STRAT_SIMPLE)
 		return ("Simple / O(n^2)");
@@ -23,50 +34,40 @@ static const char *strategy_name(t_strategy strategy, int disorder)
 	return ("Adaptive / O(n log n)");
 }
 
-static void put_stat(const char *name, size_t n)
+static void	put_stat(const char *name, size_t n)
 {
-	ft_putstr_fd(" ", 2);
-	ft_putstr_fd(name, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putnbr_fd(n, 2);
+	ft_printf(1, "%c", " ");
+	ft_printf(1, "%s", name);
+	ft_printf(1, "%s", ": ");
+	ft_printf(1, "%i", n);
 }
 
-static void put_disorder(int disorder)
+static void	print_ops(t_stats *s)
 {
-	ft_putnbr_fd(disorder / 100, 2);
-	ft_putstr_fd(".", 2);
-	if (disorder % 100 < 10)
-		ft_putstr_fd("0", 2);
-	ft_putnbr_fd(disorder % 100, 2);
-	ft_putstr_fd("%\n", 2);
-}
-
-static void print_ops(t_stats *s)
-{
-	ft_putstr_fd("[bench]", 2);
+	ft_printf(1, "%s", "[bench]");
 	put_stat("sa", s->count[OP_SA]);
 	put_stat("sb", s->count[OP_SB]);
 	put_stat("ss", s->count[OP_SS]);
 	put_stat("pa", s->count[OP_PA]);
 	put_stat("pb", s->count[OP_PB]);
-	ft_putstr_fd("\n[bench]", 2);
+	ft_printf(1, "%s", "\n[bench]");
 	put_stat("ra", s->count[OP_RA]);
 	put_stat("rb", s->count[OP_RB]);
 	put_stat("rr", s->count[OP_RR]);
 	put_stat("rra", s->count[OP_RRA]);
 	put_stat("rrb", s->count[OP_RRB]);
 	put_stat("rrr", s->count[OP_RRR]);
-	ft_putstr_fd("\n", 2);
+	ft_printf(1, "%s", "\n");
 }
 
-void print_bench(t_config *cfg, t_stats *stats, int disorder)
+void	print_bench(t_config *cfg, t_stats *stats, int disorder)
 {
-	ft_putstr_fd("[bench] disorder: ", 2);
+	ft_printf(1, "%s", "[bench] disorder: ");
 	put_disorder(disorder);
-	ft_putstr_fd("[bench] strategy: ", 2);
-	ft_putstr_fd(strategy_name(cfg->strategy, disorder), 2);
-	ft_putstr_fd("\n[bench] total_ops: ", 2);
-	ft_putnbr_fd(stats->total, 2);
-	ft_putstr_fd("\n", 2);
+	ft_printf(1, "%s", "[bench] strategy: ");
+	ft_printf(1, strategy_name(cfg->strategy, disorder));
+	ft_printf(1, "%s", "\n[bench] total_ops: ");
+	ft_printf(1, "%s", stats->total);
+	ft_printf(1, "%s", "\n");
 	print_ops(stats);
 }

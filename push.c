@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:20:00 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:20:03 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 void	stack_add_top(t_stack *stack, t_node *node)
@@ -20,7 +31,7 @@ void	pa(t_stack *a, t_stack *b)
 	b->size--;
 	stack_add_top(a, temp);
 	stats_record(a->stats, OP_PA);
-	printf("pa\n");
+	ft_printf(1, "%s", "pa\n");
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -34,5 +45,5 @@ void	pb(t_stack *a, t_stack *b)
 	a->size--;
 	stack_add_top(b, temp);
 	stats_record(a->stats, OP_PB);
-	printf("pb\n");
+	ft_printf(1, "%s", "pb\n");
 }

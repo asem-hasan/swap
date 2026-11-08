@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:18:33 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:18:35 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 static	void	find_last_and_before(t_stack *stack, t_node **last,
@@ -39,7 +50,7 @@ void	rrr(t_stack *a, t_stack *b)
 	if (done)
 	{
 		stats_record(a->stats, OP_RRR);
-		printf("rrr\n");
+		ft_printf(1, "%s", "rrr\n");
 	}
 }
 
@@ -48,7 +59,7 @@ void	rra(t_stack *a)
 	if (rev_rotate(a))
 	{
 		stats_record(a->stats, OP_RRA);
-		printf("rra\n");
+		ft_printf(1, "%s", "rra\n");
 	}
 }
 
@@ -57,6 +68,6 @@ void	rrb(t_stack *b)
 	if (rev_rotate(b))
 	{
 		stats_record(b->stats, OP_RRB);
-		printf("rrb\n");
+		ft_printf(1, "%s", "rrb\n");
 	}
 }

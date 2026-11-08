@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_flag.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syaseen <syaseen@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 11:19:39 by syaseen           #+#    #+#             */
+/*   Updated: 2026/11/08 11:19:42 by syaseen          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 int	parse_flag(const char *arg, t_config *cfg)
@@ -16,20 +27,3 @@ int	parse_flag(const char *arg, t_config *cfg)
 		return (0);
 	return (1);
 }
-
-/*int main(int argc, char **argv)
-{
-	t_config cfg;
-	int i = 1;
-
-	
-	while (i < argc)
-	{
-		if (parse_flag(argv[i], &cfg))
-			printf("flag:   %s\n", argv[i]);
-		else
-			printf("number: %s\n", argv[i]);
-		i++;
-	}
-	printf("strategy=%d bench=%d\n", cfg.strategy, cfg.bench);
-}*/
