@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
-#include <stdio.h>
 
 typedef struct s_node
 {
@@ -100,6 +99,7 @@ int		parse_args(int argc, char **argv, t_stack *a, t_config *cfg);
 void	list_add_back(t_stack *a, t_node *node);
 int		compute_disorder(t_stack *a);
 int		is_sorted(t_stack *a);
+void	sort_small(t_stack *a, t_stack *b);
 void	simple(t_stack *stack_a, t_stack *stack_b);
 void	chunk_sort(t_stack *stack_a, t_stack *stack_b);
 void	complex(t_stack *stack_a, t_stack *stack_b);
@@ -107,9 +107,9 @@ void	print_bench(t_config *cfg, t_stats *stats, int disorder);
 void	stats_record(t_stats *stats, t_operation op);
 size_t	ft_isqrt(size_t n);
 void	put_disorder(int disorder);
-int	ft_printf_nbr(int fd, int n);
-int	ft_printf_chr(int fd, char c);
-int	ft_printf_str(int fd, char *str);
-int	ft_printf(int fd, const char *str, ...);
+int		ft_printf_nbr(int fd, int n);
+int		ft_printf_chr(int fd, char c);
+int		ft_printf_str(int fd, char *str);
+int		ft_printf(int fd, const char *str, ...);
 
 #endif

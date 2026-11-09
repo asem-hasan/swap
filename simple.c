@@ -71,6 +71,11 @@ void	simple(t_stack *stack_a, t_stack *stack_b)
 
 	if (!stack_a || !stack_a->top)
 		return ;
+	if (stack_a->size <= 5)
+	{
+		sort_small(stack_a, stack_b);
+		return ;
+	}
 	while (stack_a->size > 0)
 	{
 		min_pos = ft_find_min_pos(stack_a);

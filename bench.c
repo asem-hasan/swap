@@ -61,13 +61,13 @@ static void	print_ops(t_stats *s)
 void	print_bench(t_config *cfg, t_stats *stats, int disorder)
 {
 	if (!cfg || !stats)
-    	return ;
+		return ;
 	ft_printf(1, "%s", "[bench] disorder: ");
 	put_disorder(disorder);
 	ft_printf(1, "%s", "[bench] strategy: ");
 	ft_printf(1, "%s", (char *)strategy_name(cfg->strategy, disorder));
 	ft_printf(1, "%s", "\n[bench] total_ops: ");
-	ft_printf(1,"%d", stats->total);
+	ft_printf(1, "%d", stats->total);
 	ft_printf(1, "%s", "\n");
 	print_ops(stats);
 }

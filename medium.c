@@ -99,6 +99,11 @@ void	chunk_sort(t_stack *stack_a, t_stack *stack_b)
 	size_t	start;
 	size_t	end;
 
+	if (stack_a->size <= 5)
+	{
+		sort_small(stack_a, stack_b);
+		return ;
+	}
 	chunk_size = ft_isqrt(stack_a->size);
 	start = 0;
 	end = start + chunk_size - 1;

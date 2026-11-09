@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 static int	ft_conversion(int fd, const char type, va_list vargs)

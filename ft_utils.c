@@ -31,15 +31,13 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-
 void	put_disorder(int disorder)
 {
-	ft_printf(2,"%d.",disorder / 100);
+	ft_printf(2, "%d.", disorder / 100);
 	if (disorder % 100 < 10)
-		ft_printf(2,"0");
-	ft_printf(2,"%d%%\n",disorder % 100);
+		ft_printf(2, "0");
+	ft_printf(2, "%d%%\n", disorder % 100);
 }
-
 
 size_t	ft_isqrt(size_t n)
 {
