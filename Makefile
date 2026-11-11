@@ -1,7 +1,7 @@
 NAME = push_swap
 
 SRCS = bench.c disorder.c ft_utils.c medium.c parse_flag.c push.c reverse_rotate.c simple.c split.c stack_utils.c complex.c \
-       main_parsing.c parse_args.c parse_utils.c rotate.c sort_uttils.c stack.c swap.c utils.c ft_printf_char.c ft_printf_nbr.c ft_printf_str.c ft_printf.c \
+       main_parsing.c parse_args.c parse_utils.c rotate.c sort_uttils.c stack.c swap.c ft_printf_char.c ft_printf_nbr.c ft_printf_str.c ft_printf.c \
 	   small_sort.c
 
 
