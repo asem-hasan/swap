@@ -36,38 +36,37 @@ static const char	*strategy_name(t_strategy strategy, int disorder)
 
 static void	put_stat(const char *name, int n)
 {
-	ft_printf(1, " %s:", name);
-	ft_printf(1, "%d", n);
+	ft_printf(2, " %s:", name);
+	ft_printf(2, "%d", n);
 }
 
 static void	print_ops(t_stats *s)
 {
-	ft_printf(1, "%s", "[bench]");
+	ft_printf(2, "%s", "[bench]");
 	put_stat("sa", s->count[OP_SA]);
 	put_stat("sb", s->count[OP_SB]);
 	put_stat("ss", s->count[OP_SS]);
 	put_stat("pa", s->count[OP_PA]);
 	put_stat("pb", s->count[OP_PB]);
-	ft_printf(1, "%s", "\n[bench]");
+	ft_printf(2, "%s", "\n[bench]");
 	put_stat("ra", s->count[OP_RA]);
 	put_stat("rb", s->count[OP_RB]);
 	put_stat("rr", s->count[OP_RR]);
 	put_stat("rra", s->count[OP_RRA]);
 	put_stat("rrb", s->count[OP_RRB]);
 	put_stat("rrr", s->count[OP_RRR]);
-	ft_printf(1, "%s", "\n");
+	ft_printf(2, "%s", "\n");
 }
 
 void	print_bench(t_config *cfg, t_stats *stats, int disorder)
 {
 	if (!cfg || !stats)
 		return ;
-	ft_printf(1, "%s", "[bench] disorder: ");
+	ft_printf(2, "%s", "[bench] disorder: ");
 	put_disorder(disorder);
-	ft_printf(1, "%s", "[bench] strategy: ");
-	ft_printf(1, "%s", (char *)strategy_name(cfg->strategy, disorder));
-	ft_printf(1, "%s", "\n[bench] total_ops: ");
-	ft_printf(1, "%d", stats->total);
-	ft_printf(1, "%s", "\n");
+	ft_printf(2, "%s", "[bench] strategy: ");
+	ft_printf(2, "%s", (char *)strategy_name(cfg->strategy, disorder));
+	ft_printf(2, "%s", "\n[bench] total_ops: ");2	ft_printf(1, "%d", stats->total);
+	ft_printf(2, "%s", "\n");
 	print_ops(stats);
 }
