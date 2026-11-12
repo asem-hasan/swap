@@ -1,4 +1,4 @@
-*This activity has been created as part of the 42 curriculum by <ahasan>, <syaseen>.*
+*This activity has been created as part of the 42 curriculum by ahasan, syaseen.*
 
 # push_swap
 
@@ -154,8 +154,8 @@ It is `0` for a sorted stack and `1` for a reverse-sorted one. The computation i
 
 | Learner | Contributions |
 |---|---|
-| <ahasan> | <e.g. stack operations, simple + medium algorithms, tests> |
-| <syaseen> | <e.g. parsing and error handling, complex algorithm, disorder metric, adaptive selector, bench mode> |
+| ahasan | <e.g. stack operations, simple + medium algorithms, tests> |
+| syaseen | <e.g. parsing and error handling, complex algorithm, disorder metric, adaptive selector, bench mode> |
 
 Both learners reviewed and can explain the entire codebase.
 

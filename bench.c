@@ -24,13 +24,13 @@ static const char	*strategy_name(t_strategy strategy, int disorder)
 	if (strategy == STRAT_SIMPLE)
 		return ("Simple / O(n^2)");
 	if (strategy == STRAT_MEDIUM)
-		return ("Medium / O(n*sqrt(n))");
+		return ("Medium / O(n√n)");
 	if (strategy == STRAT_COMPLEX)
 		return ("Complex / O(n log n)");
 	if (disorder < 2000)
 		return ("Adaptive / O(n^2)");
 	if (disorder < 5000)
-		return ("Adaptive / O(n*sqrt(n))");
+		return ("Adaptive / O(n√n)");
 	return ("Adaptive / O(n log n)");
 }
 
@@ -66,7 +66,8 @@ void	print_bench(t_config *cfg, t_stats *stats, int disorder)
 	put_disorder(disorder);
 	ft_printf(2, "%s", "[bench] strategy: ");
 	ft_printf(2, "%s", (char *)strategy_name(cfg->strategy, disorder));
-	ft_printf(2, "%s", "\n[bench] total_ops: ");2	ft_printf(1, "%d", stats->total);
+	ft_printf(2, "%s", "\n[bench] total_ops: ");
+	ft_printf(2, "%d", stats->total);
 	ft_printf(2, "%s", "\n");
 	print_ops(stats);
 }
